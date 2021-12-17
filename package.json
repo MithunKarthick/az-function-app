@@ -1,0 +1,16 @@
+{
+  "name": "loginflow",
+  "version": "1.0.0",
+  "description": "loginflow serverless api",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "main": "index.js",
+  "author": "mithun",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "mongoose": "^6.1.2"
+  }
+}
