@@ -1,10 +1,7 @@
 const { readUser, createUser } = require("./crud");
 
 module.exports = async function (context, req) {
-  context.log("JavaScript HTTP trigger function processed a request.");
-
-  const name = req.query.name || (req.body && req.body.name);
-
+  context.log(">>>>Testing<<<<<");
   try {
     const userTmp = await readUser(req.body);
     const user = {

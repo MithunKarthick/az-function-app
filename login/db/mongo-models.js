@@ -20,7 +20,7 @@ const getMongoConnection = async (modelName) => {
   // }
 
   try {
-    await mongoose.connect(process.env.MONGO_CONNECTION_URL);
+    await mongoose.connect("mongodb+srv://theMyth333:Myth_333@skylark.fk5wz.mongodb.net/loginFlow?retryWrites=true&w=majority");
     const User = mongoose.model("user", userSchema, "users"); //3rd collection name
     console.log("Connected to mongoDB");
     return { User };
