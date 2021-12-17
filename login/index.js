@@ -1,13 +1,23 @@
+const { readUser, createUser } = require("./crud");
+
 module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+  context.log("JavaScript HTTP trigger function processed a request.");
 
-    const name = (req.query.name || (req.body && req.body.name));
-    const responseMessage = name
-        ? "Hello, " + name + ". This HTTP triggered function executed successfully."
-        : "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.";
+  const name = req.query.name || (req.body && req.body.name);
 
-    context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: responseMessage
+  try {
+    const userTmp = await readUser(req.body);
+    const user = {
+      name: userTmp.name,
+      email: userTmp.email,
+      phone: userTmp.phone,
     };
-}
+    context.res = {
+      body: user,
+    };
+  } catch (error) {
+    context.res = {
+      body: error.message,
+    };
+  }
+};
