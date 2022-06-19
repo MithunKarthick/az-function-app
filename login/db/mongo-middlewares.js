@@ -1,8 +1,8 @@
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 const encrypt = async function (next) {
   try {
-    // this.password = await bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 10);
   } catch (error) {
     throw new Error(error);
   }
@@ -18,9 +18,9 @@ const checkUserAvailable = function (user, next) {
 
 const verifyPassword = async function (rawPass) {
   try {
-    // if (!(await bcrypt.compare(rawPass, this.password))) {
-    //   throw new Error("Invalid Password");
-    // }
+    if (!(await bcrypt.compare(rawPass, this.password))) {
+      throw new Error("Invalid Password");
+    }
   } catch (error) {
     throw new Error(error.message);
   }
